@@ -37,14 +37,110 @@ STEP 5:Normalizing the data<BR>
 STEP 6:Splitting the data into test and train<BR>
 
 ##  PROGRAM:
-TYPE YOUR CODE HERE
+IMPORT LIBRARIES :
 
+import pandas as pd
+import io
+from sklearn.preprocessing import StandardScaler
+from sklearn.preprocessing import MinMaxScaler
+from sklearn.model_selection import train_test_split
+from scipy import stats
+import numpy as np
+
+READ THE DATA:
+df=pd.read_csv("Churn_Modelling.csv")
+
+CHECK DATA:
+df.head()
+df.tail()
+df.columns
+
+CHECK THE MISSING DATA:
+df.isnull().sum()
+ASSIGNING X:
+X = df.iloc[:,:-1].values
+X
+ASSIGNING Y:
+Y = df.iloc[:,-1].values
+Y
+CHECK FOR OUTLIERS:
+df.describe()
+
+DROPPING STRING VALUES DATA FROM DATASET:
+data = df.drop(['Surname', 'Geography','Gender'], axis=1)
+
+CHECKING DATASETS AFTER DROPPING STRING VALUES DATA FROM DATASET:
+data.head()
+
+NORMALIE THE DATASET USING (MinMax Scaler):
+scaler=MinMaxScaler()
+df1=pd.DataFrame(scaler.fit_transform(data))
+print(df1)
+
+SPLIT THE DATASET:
+X=df.iloc[:,:-1].values
+Y=df.iloc[:,-1].values
+print(X)
+print(Y)
+
+TRAINING AND TESTING MODEL:
+X_train ,X_test ,Y_train,Y_test=train_test_split(X,Y,test_size=0.2)
+print("X_train\n")
+print(X_train)
+print("\nLenght of X_train ",len(X_train))
+print("\nX_test\n")
+print(X_test)
+print("\nLenght of X_test ",len(X_test))
 
 ## OUTPUT:
-SHOW YOUR OUTPUT HERE
+DATA CHECKING:
+
+![image](https://github.com/user-attachments/assets/5b5d8cde-7762-4325-9134-f8ba54e7be70)
+
+MISSING DATA:
+
+
+![image](https://github.com/user-attachments/assets/b80c0040-7e3f-401c-868f-c8583040f0c9)
+
+DUPLICATES IDENTIFICATION:
+
+
+![image](https://github.com/user-attachments/assets/e0c656eb-cf31-4bdc-ad7a-c52769bc58eb)
+
+VALUE OF Y:
+
+
+![image](https://github.com/user-attachments/assets/0d86b56f-89fc-4f4c-aade-d81b53c323fa)
+
+OUTLIERS:
+
+
+![image](https://github.com/user-attachments/assets/6310af08-274e-4cca-9721-cb19fa9a8d44)
+
+CHECKING DATASET AFTER DROPPING STRING VALUES DATA FROM DATASET:
+
+![image](https://github.com/user-attachments/assets/d9d5dded-e026-4440-8ff8-5425b0adc37b)
+
+NORMALIZE THE DATASET:
+
+
+![image](https://github.com/user-attachments/assets/98d3eacf-d5a2-484d-b916-e178d40dd36b)
+
+SPLIT THE DATASET:
+
+![image](https://github.com/user-attachments/assets/c05e11fb-4f76-4518-8b82-dd1d359728ac)
+
+### TRAINING AND TESTING MODEL:
+![image](https://github.com/user-attachments/assets/a7c0cb51-6751-407f-aff1-bf409c7815f8)
+
+
 
 
 ## RESULT:
 Thus, Implementation of Data Preprocessing is done in python  using a data set downloaded from Kaggle.
+
+
+
+
 
 
